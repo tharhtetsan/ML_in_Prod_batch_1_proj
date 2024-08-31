@@ -11,7 +11,7 @@ app = FastAPI()
 @app.get("/")
 def home():
     version = os.getenv("APP_VERSION")
-    str_out = "Hello this is a test server version : {}".format(version)
+    str_out = "Hello world this is a test server version : {}".format(version)
     return str_out
 
 if __name__== "__main__":
