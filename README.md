@@ -9,4 +9,11 @@ docker run -p 8080:8080 sample_fastapi
 
 #docker run with env
 docker run -p 8080:8080 --env APP_VERSION=v9999 sample_fastapi
+
+# check running docker container
+docker ps
+
+#stop docker container
+docker stop CONTAINER_IMAGE_ID
+
 ```
