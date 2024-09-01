@@ -1,0 +1,7 @@
+steps:
+# Build the container image
+- name: gcr.io/cloud-builders/docker
+  args: ["build","--no-cache","-t","$_AR_HOSTNAME/$_PROJECT_ID/cloud-run-source-deploy/$_IMAGE_NAME:$_SERVER",".","-f"]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
