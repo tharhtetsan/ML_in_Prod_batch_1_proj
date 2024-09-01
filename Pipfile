@@ -15,6 +15,7 @@ accelerate = "*"
 soundfile = "*"
 tensorflow = "==2.14.0"
 opencv-python = "*"
+python-dotenv = "*"
 
 [dev-packages]
 tensorflow-macos = "*"
