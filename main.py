@@ -3,6 +3,7 @@ import uvicorn
 import os
 from dotenv import load_dotenv
 import torch
+import tensorflow
 load_dotenv()
 
 
