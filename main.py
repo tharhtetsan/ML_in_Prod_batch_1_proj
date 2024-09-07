@@ -2,12 +2,41 @@ from fastapi import FastAPI
 import uvicorn
 import os
 from dotenv import load_dotenv
+
+from fastapi import FastAPI, UploadFile
+import uvicorn
+import tensorflow as tf
+from contextlib import asynccontextmanager
+from model_work import CatAndDogModel_work, SkinCancerModel_work,m_text,m_autio
+from PIL import Image
+import io
+import numpy as np
 import torch
-import tensorflow
+
+from fastapi.responses import StreamingResponse
+from fastapi import Query,status,Response
 load_dotenv()
 
 
+
+ml_models = {}
+
+
+
 app = FastAPI()
+
+
+
+@app.get("/check_gpu")
+def check_gpu():
+    tf_gpu_status = tf.test.is_gpu_available()
+    troch_gpu_status  = torch.backends.mps.is_available()
+    _response =  {"tf_gpu_status" : tf_gpu_status,
+                  "torch_gpu_status" : troch_gpu_status}
+
+    return _response
+
+
 
 
 @app.get("/")
