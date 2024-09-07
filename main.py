@@ -20,7 +20,32 @@ load_dotenv()
 
 
 ml_models = {}
+@asynccontextmanager
+async def lifespan (app : FastAPI):
+    """
+    CatAndDogModel_obj = CatAndDogModel_work()
+    CatAndDogModel_obj.load_model()
+    ml_models["cat_and_dog_model"] = CatAndDogModel_obj
 
+
+    skincancer_obj = SkinCancerModel_work()
+    skincancer_obj.load_model()
+    ml_models["skincancer_model"] = skincancer_obj
+    
+
+    audio_obj = m_autio()
+    audio_obj.load_model()
+    ml_models["m_audio"] = audio_obj
+
+    """
+
+    text_obj = m_text()
+    text_obj.load_model()
+    ml_models["m_text"] = text_obj
+
+    yield
+    ml_models.clear()
+    
 
 
 app = FastAPI()

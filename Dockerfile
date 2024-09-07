@@ -10,7 +10,7 @@ RUN pip install pipenv
 
 RUN pipenv install --system --deploy
 RUN pip3 install opencv-python
-RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+RUN pip3 install torch
 RUN pip3 install tensorflow
 
 
