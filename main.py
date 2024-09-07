@@ -3,6 +3,8 @@ import uvicorn
 import os
 from dotenv import load_dotenv
 
+import cv2
+
 from fastapi import FastAPI, UploadFile
 import uvicorn
 import tensorflow as tf
