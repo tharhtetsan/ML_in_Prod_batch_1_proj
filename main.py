@@ -73,5 +73,14 @@ def home():
     str_out = "Hello world this is {} -  server version : {}".format(dev_env,version)
     return str_out
 
+
+@app.get("/text_gen")
+def serve_text_gen(prompt = Query(...)):
+    generated_text = ml_models["m_text"]._predict(data_input = prompt)
+
+    _response = {"generated_text":generated_text}
+    return _response
+
+
 if __name__== "__main__":
     uvicorn.run("main:app",host='0.0.0.0',port=8080,reload=True)
