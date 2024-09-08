@@ -45,12 +45,15 @@ async def lifespan (app : FastAPI):
     text_obj.load_model()
     ml_models["m_text"] = text_obj
 
+
+
+
     yield
     ml_models.clear()
     
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 
 
