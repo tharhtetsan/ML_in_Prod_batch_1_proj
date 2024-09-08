@@ -34,12 +34,12 @@ async def lifespan (app : FastAPI):
     skincancer_obj.load_model()
     ml_models["skincancer_model"] = skincancer_obj
     
-
+    """
     audio_obj = m_autio()
     audio_obj.load_model()
     ml_models["m_audio"] = audio_obj
 
-    """
+    
 
     text_obj = m_text()
     text_obj.load_model()
@@ -83,6 +83,17 @@ def serve_text_gen(prompt = Query(...)):
 
     _response = {"generated_text":generated_text}
     return _response
+
+@app.get("/text_audio",
+          responses={status.HTTP_200_OK:{"content" : {"audio/wav":{}}}},
+          response_class=StreamingResponse,)
+def serve_text_to_audio(prompt = Query(...),prest : m_autio.VoicePresets = Query(default="v2/en_speaker_9")):
+    #print("user prompt : ",prompt)
+    #print("prest : ",prest)
+
+    output_buffer = ml_models["m_audio"]._predict(data_input = prompt)
+    
+    return StreamingResponse(output_buffer, media_type="audio/wav")
 
 
 if __name__== "__main__":
