@@ -6,9 +6,21 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = "*"
+pillow = "*"
+python-multipart = "*"
+openai = "*"
+torch = "*"
+transformers = "==4.42.4"
+accelerate = "*"
+soundfile = "*"
+tensorflow = "==2.14.0"
+opencv-python = "*"
 python-dotenv = "*"
 
 [dev-packages]
+tensorflow-macos = "*"
+tensorflow-metal = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.10"
